@@ -200,26 +200,68 @@ h2::after {
 .about p {
   font-size: 1.025rem;
   color: var(--text-muted);
-  max-width: 680px;
   margin-bottom: 18px;
   line-height: 1.85;
 }
 
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 36px;
+/* ── Stack Marquee ── */
+.stack-marquee {
+  margin-top: 48px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
 }
 
-.skill-tag {
-  background: rgba(74, 111, 165, 0.1);
-  color: var(--primary-dark);
-  font-size: 0.8rem;
+.stack-track {
+  display: flex;
+  gap: 48px;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.stack-track:hover { animation-play-state: paused; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.stack-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 56px;
+  cursor: default;
+}
+
+.stack-item img {
+  height: 48px;
+  width: auto;
+  opacity: 0.6;
+  transition: opacity 0.25s, transform 0.25s;
+  filter: saturate(0.8);
+}
+
+.stack-item:hover img {
+  opacity: 1;
+  transform: translateY(-4px) scale(1.1);
+  filter: saturate(1);
+}
+
+.stack-item span {
+  font-size: 0.7rem;
   font-weight: 500;
-  padding: 5px 14px;
-  border-radius: 20px;
-  border: 1px solid rgba(74, 111, 165, 0.2);
+  color: var(--text-muted);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.stack-item:hover span {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ── Services Cards ── */
