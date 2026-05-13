@@ -91,10 +91,19 @@ h2::after {
 }
 
 .nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-weight: 700;
   font-size: 1.05rem;
   color: var(--primary-dark);
   letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.nav-logo {
+  height: 34px;
+  width: auto;
   flex-shrink: 0;
 }
 

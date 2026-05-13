@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 180">
+  <defs>
+    <!-- Gradient spans the full mark width, left blue → right teal -->
+    <linearGradient id="g" x1="10" y1="0" x2="220" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#1565C0"/>
+      <stop offset="100%" stop-color="#26A69A"/>
+    </linearGradient>
+    <!-- Mask: hide the left hex where it enters the right hex interior (interlocking) -->
+    <mask id="lm">
+      <rect width="230" height="180" fill="white"/>
+      <path d="M214,90 L183,144 L121,144 L90,90 L121,36 L183,36 Z" fill="black"/>
+    </mask>
+  </defs>
+
+  <!-- Left hexagon ring — drawn behind, masked where it enters the right hex -->
+  <path d="M142,90 L111,144 L49,144 L18,90 L49,36 L111,36 Z"
+        fill="none" stroke="url(#g)" stroke-width="16" stroke-linejoin="round"
+        mask="url(#lm)"/>
+  <!-- Left inner data node -->
+  <circle cx="80" cy="90" r="17" fill="none" stroke="url(#g)" stroke-width="6" mask="url(#lm)"/>
+  <circle cx="80" cy="90" r="4"  fill="url(#g)" mask="url(#lm)"/>
+
+  <!-- Right hexagon ring — drawn on top -->
+  <path d="M214,90 L183,144 L121,144 L90,90 L121,36 L183,36 Z"
+        fill="none" stroke="url(#g)" stroke-width="16" stroke-linejoin="round"/>
+  <!-- Right inner data node -->
+  <circle cx="152" cy="90" r="17" fill="none" stroke="url(#g)" stroke-width="6"/>
+  <circle cx="152" cy="90" r="4"  fill="url(#g)"/>
+</svg>
